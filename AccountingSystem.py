@@ -2,25 +2,37 @@
 accounts = {}
 
 # create a function to create a new account
-def create_account(account_name, initial_balance):
+def create_account():
+    account_name = input("Enter account name: ")
+    initial_balance = float(input("Enter initial balance: "))
     accounts[account_name] = initial_balance
 
 # create a function to record a transaction
-def record_transaction(debit_account, credit_account, amount):
-    if debit_account not in accounts or credit_account not in accounts:
-        print("Error: No account found.")
+def record_transaction():
+    debit_account = input("Enter existing debit account name: ")
+    credit_account = input("Enter existing credit account name: ")
+    amount = float(input("Enter transaction amount: "))
+    if debit_account not in accounts:
+        print("Error: No debit account found.")
         return
+    if credit_account not in accounts:
+        print("Error: No credit account found")
+        return
+
+    accounts[debit_account] -= amount
+    accounts[credit_account] += amount
     
 # create a function to view the account balances
 def view_balances():
     for account, balance in accounts.items():
-        print("{account}: {balance}")
+        print(f"{account}: {balance}")
 
 # test 
-create_account("Cash", 1000)
-create_account("Inventory", 500)
-record_transaction("Cash", "Inventory", 200)
-view_balances()
+def main():
+    create_account()
+    create_account()
+    record_transaction()
+    view_balances()
 
-#adding user input
+main()
 
