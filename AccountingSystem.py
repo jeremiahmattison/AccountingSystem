@@ -22,3 +22,5 @@ create_account("Inventory", 500)
 record_transaction("Cash", "Inventory", 200)
 view_balances()
 
+#adding user input
+
